@@ -1,19 +1,15 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASS,
-    port: process.env.DB_PORT || 5432,
-});
+// Use the connection string from the environment variable
+const connectionString = process.env.DB_URL || 'postgresql://secure_vision_user:kf7LolWYpwqc5HysmOOTWqJU3c7OdnIl@dpg-cusuemtsvqrc73e200ng-a.oregon-postgres.render.com/secure_vision';
 
-console.log(typeof process.env.DB_PASS);
+const pool = new Pool({
+    connectionString,
+});
 
 pool.connect()
     .then(() => console.log('Connected to PostgreSQL'))
     .catch(err => console.error('Database connection error:', err));
-
 
 module.exports = pool;
