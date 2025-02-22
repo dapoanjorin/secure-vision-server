@@ -72,3 +72,6 @@ jspm_packages/
 
 # Qodo specific
 .qodo
+
+# Google Cloud Service Account Credentials
+src/vision-43281-firebase-adminsdk-fbsvc-a7fd89e210.json
