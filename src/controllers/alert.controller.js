@@ -18,7 +18,7 @@ exports.createAlert = async (req, res) => {
                 title: `Security Alert: ${type}`,
                 body: description,
             },
-            topic: "personnel_alerts"  // All personnel subscribed to this topic will receive notifications
+            token: "dJqMkWeHTjmvl0FLfCUQn_:APA91bGwNYbHVIf5g7qnBVlxReo1AfL2-NBPHXk98eQePo1q7eOh9RxnE2_ijJhDwxvXmbeCSnVrJWEXYYZV9O7pshqSyGATKyYP14USv8Qv7JOeeNI60FA"  // All personnel subscribed to this topic will receive notifications
         };
 
         await admin.messaging().send(message);
