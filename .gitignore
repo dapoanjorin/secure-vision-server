@@ -70,6 +70,8 @@ jspm_packages/
 # MacOS specific files
 .DS_Store
 
+/src/firebase_key.json
+
 # Qodo specific
 .qodo
 .qodo

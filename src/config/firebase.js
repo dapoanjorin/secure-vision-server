@@ -1,5 +1,6 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../vision-43281-firebase-adminsdk-fbsvc-7bb1f3e51f.json");
+const serviceAccountPath = process.env.KEY_FILE_PATH;
+const serviceAccount = require(serviceAccountPath);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
