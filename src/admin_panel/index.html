@@ -13,6 +13,7 @@
         <h1>SecureVision Admin</h1>
     </div>
 </header>
+
 <nav>
     <ul>
         <li><a href="index.html" class="active">Dashboard</a></li>
@@ -21,6 +22,7 @@
         <li><a href="logs.html">View Logs</a></li>
     </ul>
 </nav>
+
 <main>
     <h2>Welcome, Admin</h2>
     <p>Monitor security alerts, manage personnel, and configure system settings.</p>
@@ -28,27 +30,81 @@
     <section class="dashboard-cards">
         <div class="card">
             <h3>Active Users</h3>
-            <p>15 Security Personnel</p>
+            <p id="userCount">Loading...</p>
         </div>
         <div class="card">
             <h3>Recent Alerts</h3>
-            <p>3 High-Risk Incidents Detected</p>
+            <p id="alertCount">Fetching...</p>
         </div>
         <div class="card">
             <h3>System Status</h3>
-            <p>All Surveillance Cameras Online</p>
+            <p id="systemStatus">Checking...</p>
         </div>
     </section>
+
+    <!-- Live Camera Feeds -->
+    <section class="camera-section">
+        <h2>Live Camera Feeds</h2>
+        <div class="camera-grid">
+            <video id="camera1" class="loading-camera" autoplay></video>
+            <video id="camera2" class="loading-camera" autoplay></video>
+            <video id="camera3" class="loading-camera" autoplay></video>
+        </div>
+    </section>
+
+    <!-- Video Upload -->
+    <section class="upload-section">
+        <h2>Upload Video for AI Scanning</h2>
+        <input type="file" id="videoUpload" accept="video/*">
+        <button id="uploadBtn">Upload & Scan</button>
+        <p id="uploadStatus"></p>
+    </section>
+
+    <!-- Loading Animation -->
+    <div id="loading" class="loading-hidden">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <!-- Logout Button -->
+    <button id="logoutBtn">Logout</button>
+
 </main>
 
-<!--<button id="logoutBtn">Logout</button>-->
+<script>
+    // Simulate loading for dashboard stats
+    setTimeout(() => {
+        document.getElementById("userCount").innerText = "15 Security Personnel";
+        document.getElementById("alertCount").innerText = "3 High-Risk Incidents Detected";
+        document.getElementById("systemStatus").innerText = "All Surveillance Cameras Online";
+    }, 2000);
 
-<!--<script>-->
-<!--    document.getElementById("logoutBtn").addEventListener("click", function () {-->
-<!--        localStorage.removeItem("adminLoggedIn");-->
-<!--        window.location.href = "login.html";-->
-<!--    });-->
-<!--</script>-->
+    // Simulate loading for live camera feeds
+    setTimeout(() => {
+        document.querySelectorAll('.loading-camera').forEach(camera => {
+            camera.classList.remove('loading-camera');
+            camera.innerHTML = "<source src='assets/videos/sample_feed.mp4' type='video/mp4'>";
+        });
+    }, 2000);
+
+    // Simulate video upload processing
+    document.getElementById("uploadBtn").addEventListener("click", () => {
+        const uploadStatus = document.getElementById("uploadStatus");
+        uploadStatus.innerText = "Uploading...";
+        setTimeout(() => {
+            uploadStatus.innerText = "Video uploaded successfully! AI is processing...";
+            setTimeout(() => {
+                uploadStatus.innerText = "No threats detected in the uploaded video.";
+            }, 3000);
+        }, 2000);
+    });
+
+    // Simulate logout
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+        localStorage.removeItem("adminLoggedIn");
+        window.location.href = "login.html";
+    });
+</script>
 
 </body>
 </html>

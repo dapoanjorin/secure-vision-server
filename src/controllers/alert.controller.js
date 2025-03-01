@@ -3,11 +3,11 @@ const admin = require('../config/firebase');
 
 exports.createAlert = async (req, res) => {
     try {
-        const { type, description, severity } = req.body;
+        const { type, description, severity, location } = req.body;
 
         const result = await pool.query(
-            "INSERT INTO alerts (type, description, severity) VALUES ($1, $2, $3) RETURNING *",
-            [type, description, severity]
+            "INSERT INTO alerts (type, description, severity, location) VALUES ($1, $2, $3, $4) RETURNING *",
+            [type, description, severity, location]
         );
 
         const alert = result.rows[0];

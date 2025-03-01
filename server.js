@@ -19,6 +19,34 @@ app.get('/', (req, res) => {
     res.send('Secure Vision Server is Running...');
 });
 
+const multer = require("multer");
+const path = require("path");
+
+// Configure storage for uploaded videos
+const storage = multer.diskStorage({
+    destination: "uploads/",
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage });
+
+// Serve static files from 'uploads' folder
+app.use("/uploads", express.static("uploads"));
+
+// Video Upload API
+app.post("/api/upload-video", upload.single("video"), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: "No video uploaded." });
+    }
+
+    // Here, you would send the file to the AI system for scanning
+    console.log(`Video uploaded: ${req.file.filename}`);
+    res.status(200).json({ message: "Video uploaded successfully.", filename: req.file.filename });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
