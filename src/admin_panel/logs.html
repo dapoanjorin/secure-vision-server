@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Logs - SecureVision</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="assets/img/logo.png" alt="SecureVision Logo">
+        <h1>SecureVision Admin</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">Manage Users</a></li>
+        <li><a href="settings.html">System Settings</a></li>
+        <li><a href="logs.html" class="active">View Logs</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Security Logs</h2>
+    <p>View all detected threats and system events.</p>
+
+    <table id="logsTable">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Event</th>
+            <th>Severity</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Log entries will be dynamically inserted here -->
+        </tbody>
+    </table>
+</main>
+
+<script src="assets/js/logs.js"></script>
+</body>
+</html>

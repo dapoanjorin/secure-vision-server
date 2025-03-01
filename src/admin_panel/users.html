@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - SecureVision</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="assets/img/logo.png" alt="SecureVision Logo">
+        <h1>SecureVision Admin</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html" class="active">Manage Users</a></li>
+        <li><a href="settings.html">System Settings</a></li>
+        <li><a href="logs.html">View Logs</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Manage Users</h2>
+    <p>View, add, or remove security personnel and system users.</p>
+
+    <button class="add-user-btn" onclick="openAddUserModal()">+ Add User</button>
+
+    <table class="users-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="user-list">
+        <tr>
+            <td>001</td>
+            <td>John Doe</td>
+            <td>Security Personnel</td>
+            <td>johndoe@example.com</td>
+            <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>Jane Smith</td>
+            <td>Admin</td>
+            <td>janesmith@example.com</td>
+            <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<!-- Add User Modal -->
+<div id="addUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddUserModal()">&times;</span>
+        <h3>Add New User</h3>
+        <form id="addUserForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="role">Role:</label>
+            <select id="role">
+                <option value="Security Personnel">Security Personnel</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+</div>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
